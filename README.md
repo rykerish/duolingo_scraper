@@ -26,7 +26,7 @@ Run `python3 -m pip install -r requirements.txt`
 
 ## Running
 
-Run the and follow the instructions (I have tried to make them as clear as possible).
+Run the script and follow the instructions (I have tried to make them as clear as possible).
 
 ### On Linux / OS X
 
