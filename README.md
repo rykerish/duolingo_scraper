@@ -37,3 +37,15 @@ Run `py scrape_duo.py` and follow the instructions (I have tried to make them as
 ### On Windows < 10
 
 Run `py scrape_duo.py` and follow the instructions (I have tried to make them as clear as possible).
+
+## Importing into Anki
+
+Open Anki, click "Import File" and choose the resulting `<language>.tsv` file. 
+
+Set the card Type to `duolingo` (from the Template), and select your target deck; fields should be separated by Tab.
+
+**Make sure the "Allow HTML in fields" option is checked or you won't have audio and images.**
+
+Unless you modified the script or did not use the default fields when running the script, the field mapping should be done automatically.
+
+Now you can just import and practice!
