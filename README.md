@@ -1,6 +1,8 @@
-# Duolingo scraper for Anki flashcards
+# [Duolingo](https://www.duolingo.com/) scraper for Anki flashcards
 
-First of all, a quick disclaimer: this script doesn't actually create Anki flashcards. It create a `<language>.tsv` file which you can then import into Anki. 
+First of all, a quick disclaimer: this script doesn't actually create Anki flashcards. It creates a `<language>.tsv` file which you can then import into Anki.
+
+Basically, it takes the [list of words you've learned](https://www.duolingo.com/words) and retrieves their [definition](https://www.duolingo.com/dictionary) which it writes into a spreadsheet.
 
 You are free to modify and share the script as you wish (see [license](https://github.com/rykerish/duolingo_scraper/blob/main/LICENSE)). However, note that if you change it, the Anki template (`Template.apkg`) will probably not be valid anymore.
 
