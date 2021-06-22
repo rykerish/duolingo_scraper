@@ -16,15 +16,27 @@ Import `Template.apkg` into Anki to have the card template. The code will not wo
 
 ### On Linux / OS X
 
-Run `pip install -r requirements.txt`
+Run the following commands in the project directory:
+```python
+python3 -m venv .venv
+.venv/bin/python -m install -r requirements.txt
+```
 
 ### On Windows 10
 
-Run `py -m pip install --user -r requirements.txt`
+Run the following commands in the project directory:
+```python
+py -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
 
 ### On Windows < 10
 
-Run `python3 -m pip install --user -r requirements.txt`
+Run the following commands in the project directory:
+```python
+python3 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
 
 ## Running
 
@@ -32,15 +44,15 @@ Run the script and follow the instructions (I have tried to make them as clear a
 
 ### On Linux / OS X
 
-`python scrape_duo_words.py`
+```python
+.venv/bin/python scrape_duo_words.py
+```
 
-### On Windows 10
+### On Windows
 
-`py scrape_duo_words.py`
-
-### On Windows < 10
-
-`python3 scrape_duo_words.py`
+```python
+.venv\Scripts\python.exe scrape_duo_words.py
+```
 
 ## Importing into Anki
 
