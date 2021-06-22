@@ -46,14 +46,21 @@ def customize_fields(word, lingo):
     while True:
         print("To see an example, type 'example';\n" +
               "To see an example for a specific field, enter the field's number + '?' (e.g.: 3?);\n" +
-              "To select the fields you want, enter the field numbers separated by a space (e.g.: 1 3 9);\n" +
-              "To cancel customization, type 'cancel' or 'x'", flush=True)
+              "To select the fields you want, enter the field numbers separated by a space and/or comma" +
+              "(e.g.: 1 3 9 or 1, 3, 9);\n" +
+              "To cancel customization, type 'cancel' or 'x';\n" +
+              "To see information, type '?'", flush=True)
         select = input("Enter your selection : ").lower()
         print()
         if select in ['cancel', 'x']:
             return fields
         elif select == "example":
             print(dumps(example, indent=4), flush=True)
+        elif select == '?':
+            print(f"Available fields:", flush=True)
+            pretty_print(enumerate(available_fields))
+            print(f"Default fields: {fields}", flush=True)
+            print(f"(= {[available_fields.index(f) for f in fields]})")
         elif re.search(r'^[0-9]+(?=\?$)', select):
             i = int(select[:-1])
             if i >= len(available_fields):
@@ -61,9 +68,9 @@ def customize_fields(word, lingo):
             else:
                 fld = available_fields[i]
                 print(f"{fld}: {example[fld]}", flush=True)
-        elif re.search(r'^[0-9]+(\s[0-9]+)*\s*$', select):
+        elif re.search(r'^[0-9]+((,|\s|,\s)[0-9]+)*\s*$', select):
             try:
-                fields = [available_fields[int(i)] for i in select.split()]
+                fields = [available_fields[int(i)] for i in re.sub(',', '', select).split()]
                 print(f'Selected fields: {fields}', flush=True)
                 if input("Confirm selection? (y/n): ").lower() in ['yes', 'y']:
                     return fields
