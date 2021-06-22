@@ -78,6 +78,12 @@ def customize_fields(word, lingo):
                 print("Invalid input (index out of range)", flush=True)
         print('\n==============================\n', flush=True)
 
+def compare_cols(df, fields):
+    cols = list(df.columns)+['id']
+    d = {'audio': 'tts', 'img': 'lexeme_image'}
+    cols = [d[c] if c in d.keys() else c for c in cols]
+    return set(fields).intersection(cols) == set(fields)
+
 def get_anki_path(lang):
     os_ = re.sub(r'[0-9]', '', sys.platform)
     default_anki_path = {
@@ -184,7 +190,13 @@ def main(lingo):
     fields = customize_fields(vocab[0], lingo)
     try:
         df = pd.read_csv(filename, sep=sep, index_col=0)
-        ids = drop_from_list(vocab, df.index.to_list())
+        if not compare_cols(df, fields+['id']):
+            print(f"Warning: {filename} already exists but contains different fields. " +
+                  "If you want to keep this file, move it or rename it.")
+            if input("Enter 'o' to overwrite. Anything else will cancel the operation: ") != 'o':
+                return
+            df = pd.DataFrame(columns=fields)
+        vocab = drop_from_list(vocab, df.index.to_list())
         if not len(vocab):
             return
         df = pd.concat([df, ids_to_df(vocab, lingo, fields, lang)])
