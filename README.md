@@ -20,11 +20,11 @@ Run `pip install -r requirements.txt`
 
 ### On Windows 10
 
-Run `py -m pip install -r requirements.txt`
+Run `py -m pip install --user -r requirements.txt`
 
 ### On Windows < 10
 
-Run `python3 -m pip install -r requirements.txt`
+Run `python3 -m pip install --user -r requirements.txt`
 
 ## Running
 
