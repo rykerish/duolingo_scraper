@@ -14,6 +14,8 @@ Made using Python 3.8.5
 
 Import `Template.apkg` into Anki to have the card template. The code will not work if you try to download media without having Anki installed.
 
+Note that when login in to Duolingo, you should use your username (the API doesn't seem to support email login)
+
 ### On Linux / OS X
 
 Run `pip install -r requirements.txt`
@@ -32,15 +34,15 @@ Run the script and follow the instructions (I have tried to make them as clear a
 
 ### On Linux / OS X
 
-`python scrape_duo.py`
+`python scrape_duo_words.py`
 
 ### On Windows 10
 
-`py scrape_duo.py`
+`py scrape_duo_words.py`
 
 ### On Windows < 10
 
-`python3 scrape_duo.py`
+`python3 scrape_duo_words.py`
 
 ## Importing into Anki
 
