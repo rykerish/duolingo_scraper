@@ -190,7 +190,7 @@ if __name__ == "__main__":
     lingo = None
     while not lingo:
         try:
-            username = input("Enter your username: ")
+            username = input("Enter your Duolingo username (email will not work!): ")
             password = getpass("Enter your password: ")
             lingo  = duolingo.Duolingo(username, password)
         except duolingo.DuolingoException as e:
