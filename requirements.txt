@@ -1,5 +1,4 @@
 requests==2.25.1
 tqdm==4.60.0
-pandas==1.2.4
+pandas==0.24.2
 duolingo_api==0.5.4
-duolingo==0.1.1
