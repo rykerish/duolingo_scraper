@@ -44,11 +44,12 @@ def customize_fields(word, lingo):
     print(f"Available fields:", flush=True)
     pretty_print(enumerate(available_fields))
     while True:
-        print("To see example, type 'example';\n" +
+        print("To see an example, type 'example';\n" +
               "To see an example for a specific field, enter the field's number + '?' (e.g.: 3?);\n" +
               "To select the fields you want, enter the field numbers separated by a space (e.g.: 1 3 9);\n" +
               "To cancel customization, type 'cancel' or 'x'", flush=True)
         select = input("Enter your selection : ").lower()
+        print()
         if select in ['cancel', 'x']:
             return fields
         elif select == "example":
@@ -66,7 +67,7 @@ def customize_fields(word, lingo):
                 print(f'Selected fields: {fields}', flush=True)
                 if input("Confirm selection? (y/n): ").lower() in ['yes', 'y']:
                     return fields
-            except:
+            except IndexError:
                 print("Invalid input (index out of range)", flush=True)
         print('\n==============================\n', flush=True)
 
@@ -155,7 +156,7 @@ def ids_to_df(vocab, lingo, fields, lang):
             d['img'] = f"<img src='{img}'/>" if img else "No image"
         try:
             res_df = res_df.append(d, ignore_index=True)
-        except:
+        except NameError:
             res_df = pd.DataFrame(d, index=[0])
     res_df = res_df.set_index('index')
     res_df.index.name = None
@@ -180,11 +181,11 @@ def main(lingo):
         if not len(vocab):
             return
         df = pd.concat([df, ids_to_df(vocab, lingo, fields, lang)])
-    except:
+    except FileNotFoundError:
         df = ids_to_df(vocab, lingo, fields, lang)
     df = df.drop_duplicates()
     df.to_csv(filename, sep=sep)
-    return df
+    return
 
 if __name__ == "__main__":
     lingo = None
@@ -196,4 +197,3 @@ if __name__ == "__main__":
         except duolingo.DuolingoException as e:
             print(e)
     main(lingo)
-
